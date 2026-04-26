@@ -7,5 +7,68 @@
     "habitat": "Tuinen, akkerranden, bosranden",
     "season": "Juli – Oktober",
     "notes": "Meest algemene hooiwagen in België. Vrouwtje heeft opvallende chelicerentanden. Lichaam grijsbruin met donkere rugstreep."
+  },
+  {
+    "name": "Leiobunum rotundum",
+    "nameFull": "Leiobunum rotundum (Latreille, 1798)",
+    "photo": "fotos/leiobunum_rotundum.jpg",
+    "rarity": "common",
+    "habitat": "Bossen, muren, holle bomen",
+    "season": "Augustus – Oktober",
+    "notes": "Rond bruin lichaam met zeer lange poten. Vrouwtje heeft donkere rugvlek. Overwintert soms in grote groepen."
+  },
+  {
+    "name": "Leiobunum blackwalli",
+    "nameFull": "Leiobunum blackwalli (Meade, 1861)",
+    "photo": "fotos/leiobunum_blackwalli.jpg",
+    "rarity": "common",
+    "habitat": "Bossen, heggen, tuinmuren",
+    "season": "Augustus – Oktober",
+    "notes": "Lijkt op L. rotundum maar mannetje heeft een opvallend lichtere rugkleur. Poten relatief korter."
+  },
+  {
+    "name": "Oligolophus tridens",
+    "nameFull": "Oligolophus tridens (C.L. Koch, 1836)",
+    "photo": "fotos/oligolophus_tridens.jpg",
+    "rarity": "common",
+    "habitat": "Vochtige bossen, struikgewas, tuinen",
+    "season": "September – November",
+    "notes": "Herkenbaar aan drie kleine stekels op de voorrand van het lichaam. Donkerbruin, relatief gedrongen."
+  },
+  {
+    "name": "Paroligolophus agrestis",
+    "nameFull": "Paroligolophus agrestis (Meade, 1855)",
+    "photo": "fotos/paroligolophus_agrestis.jpg",
+    "rarity": "common",
+    "habitat": "Graslanden, akkerranden, open terrein",
+    "season": "Juli – Oktober",
+    "notes": "Lichtbruin met vage donkere rugstreep. Veel kleiner dan Leiobunum-soorten. Typisch in open, droge biotopen."
+  },
+  {
+    "name": "Mitopus morio",
+    "nameFull": "Mitopus morio (Fabricius, 1779)",
+    "photo": "fotos/mitopus_morio.jpg",
+    "rarity": "common",
+    "habitat": "Bossen, heidevelden, bergachtige gebieden",
+    "season": "Juli – Oktober",
+    "notes": "Zeer variabele tekening. Vaak donkere zadelvlek op rug. Eén van de meest verspreide soorten in Europa."
+  },
+  {
+    "name": "Nemastoma bimaculatum",
+    "nameFull": "Nemastoma bimaculatum (Fabricius, 1775)",
+    "photo": "fotos/nemastoma_bimaculatum.jpg",
+    "rarity": "uncommon",
+    "habitat": "Vochtige bossen, onder dood hout en bladstrooisel",
+    "season": "Het hele jaar",
+    "notes": "Klein en donker met twee witte vlekjes op de rug. Korte poten. Leeft verborgen onder stenen en hout."
+  },
+  {
+    "name": "Anelasmocephalus cambridgei",
+    "nameFull": "Anelasmocephalus cambridgei (Westwood, 1874)",
+    "photo": "fotos/anelasmocephalus_cambridgei.jpg",
+    "rarity": "rare",
+    "habitat": "Kalkrijke bossen, onder stenen op kalkbodem",
+    "season": "Voorjaar – Zomer",
+    "notes": "Zeldzame en kleine soort. Lichtbruin, bijna zonder oogtuberkels. Sterk gebonden aan kalkrijke biotopen."
   }
 ]
