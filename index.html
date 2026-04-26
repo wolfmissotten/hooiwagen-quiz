@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hooiwagens van België — Opiliones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:      #f5f0e8;
+    --bg2:     #ede7d9;
+    --bg3:     #e0d8c8;
+    --ink:     #1a1610;
+    --ink2:    #4a4238;
+    --ink3:    #7a6e60;
+    --accent:  #5c3d1e;
+    --accent2: #8b5e30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Mono', monospace;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--bg3);
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-top: 4px;
+  }
+
+  main {
+    flex: 1;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    align-items: center;
+  }
+
+  .stat-pill {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: var(--bg2);
+    color: var(--ink2);
+  }
+
+  .stat-pill.good { background: #d4e8c2; color: #2a4a18; }
+  .stat-pill.bad  { background: #e8c2c2; color: #4a1818; }
+
+  .progress-track {
+    flex: 1;
+    height: 2px;
+    background: var(--bg3);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 1px;
+    transition: width 0.4s ease;
+  }
+
+  /* Flashcard */
+  .flashcard {
+    background: #faf7f2;
+    border: 1px solid var(--bg3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 0 var(--bg3);
+  }
+
+  .card-image-area {
+    position: relative;
+    width: 100%;
+    height: 340px;
+    background: var(--bg2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-image-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .no-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--ink3);
+    opacity: 0.5;
+  }
+
+  .no-photo svg { width: 48px; height: 48px; }
+  .no-photo p { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .card-counter {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    padding: 4px 10px;
+    background: rgba(26,22,16,0.55);
+    color: #faf7f2;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(4px);
+  }
+
+  .rarity-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .tag-common   { background: #d4e8c2cc; color: #2a4a18; }
+  .tag-uncommon { background: #e8dfc2cc; color: #4a3818; }
+  .tag-rare     { background: #e8c2c2cc; color: #4a1818; }
+
+  .card-body { padding: 1.5rem; }
+
+  .card-question {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+
+  /* Options */
+  .options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .opt {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 14px;
+    font-style: italic;
+    padding: 12px 14px;
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid var(--bg3);
+    border-radius: 3px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s, transform 0.1s;
+    line-height: 1.35;
+  }
+
+  .opt:hover:not(:disabled) {
+    background: var(--bg2);
+    border-color: var(--ink3);
+    transform: translateY(-1px);
+  }
+
+  .opt.correct { background: #d4e8c2; border-color: #3d5a2e; color: #2a4a18; }
+  .opt.wrong   { background: #e8c2c2; border-color: #8b3d1e; color: #4a1818; }
+  .opt:disabled { cursor: default; transform: none; }
+
+  /* Feedback */
+  .feedback {
+    display: none;
+    padding: 1rem 1.25rem;
+    border-radius: 3px;
+    font-size: 13px;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    border-left: 3px solid;
+  }
+
+  .feedback.show { display: block; }
+  .feedback.correct { background: #eaf4da; border-color: #3d5a2e; color: #2a3a1a; }
+  .feedback.wrong   { background: #f4e0da; border-color: #8b3d1e; color: #3a1a18; }
+
+  .feedback strong {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .detail-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 8px;
+    font-size: 11px;
+    opacity: 0.7;
+    flex-wrap: wrap;
+    letter-spacing: 0.03em;
+  }
+
+  .next-row { display: flex; justify-content: flex-end; }
+
+  .next-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    transition: opacity 0.15s;
+  }
+
+  .next-btn:hover { opacity: 0.8; }
+
+  /* Done screen */
+  .done-screen {
+    display: none;
+    text-align: center;
+    padding: 3.5rem 2rem;
+    background: #faf7f2;
+    border: 1px solid var(--bg3);
+    border-radius: 4px;
+    box-shadow: 0 2px 0 var(--bg3);
+  }
+
+  .done-screen.show { display: block; }
+
+  .done-score {
+    font-family: 'Fraunces', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .done-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1.5rem;
+  }
+
+  .done-msg {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink2);
+    margin-bottom: 2rem;
+  }
+
+  .restart-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    background: var(--ink);
+    color: var(--bg);
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .restart-btn:hover { opacity: 0.8; }
+
+  /* Error / loading */
+  .status-msg {
+    text-align: center;
+    padding: 3rem;
+    color: var(--ink3);
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .status-msg strong { color: var(--ink2); display: block; margin-bottom: 0.5rem; font-size: 15px; font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; }
+
+  @media (max-width: 520px) {
+    .options { grid-template-columns: 1fr; }
+    .card-image-area { height: 240px; }
+    .done-score { font-size: 4rem; }
+    h1 { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <h1>Hooiwagens van België <em>— Opiliones</em></h1>
+    <div class="subtitle">Leer de soorten herkennen</div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <div class="stats">
+      <span class="stat-pill good" id="s-correct">✓ 0</span>
+      <span class="stat-pill bad"  id="s-wrong">✗ 0</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="prog" style="width:0%"></div>
+      </div>
+      <span class="stat-pill" id="s-progress">0 / 0</span>
+    </div>
+
+    <div id="status" class="status-msg">
+      <strong>Kaarten laden…</strong>
+    </div>
+
+    <div class="flashcard" id="flashcard" style="display:none">
+      <div class="card-image-area" id="img-area"></div>
+      <div class="card-body">
+        <div class="card-question">Welke hooiwagensoort is dit?</div>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="next-row">
+          <button class="next-btn" id="next-btn">Volgende →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="done-screen" id="done-screen">
+      <div class="done-score" id="done-score">0</div>
+      <div class="done-label">correct van <span id="done-total">0</span></div>
+      <div class="done-msg" id="done-msg"></div>
+      <button class="restart-btn" onclick="startLearning()">Opnieuw beginnen</button>
+    </div>
+
+  </div>
+</main>
+
+<script>
+const RARITY_LABEL = { common: 'Gewoon', uncommon: 'Ongewoon', rare: 'Zeldzaam' };
+const RARITY_CLASS = { common: 'tag-common', uncommon: 'tag-uncommon', rare: 'tag-rare' };
+
+let cards = [];
+let deck  = [];
+let idx = 0, correct = 0, wrong = 0;
+let answered = false;
+
+async function loadCards() {
+  try {
+    const res = await fetch('cards.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    cards = await res.json();
+    if (!cards.length) throw new Error('Geen kaarten gevonden');
+    startLearning();
+  } catch (e) {
+    document.getElementById('status').innerHTML =
+      '<strong>cards.json niet gevonden</strong>' +
+      'Zorg dat <code>cards.json</code> naast <code>index.html</code> staat in je repo.<br>' +
+      'Fout: ' + e.message;
+  }
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startLearning() {
+  deck = shuffle(cards);
+  idx = 0; correct = 0; wrong = 0; answered = false;
+  document.getElementById('status').style.display = 'none';
+  document.getElementById('done-screen').classList.remove('show');
+  document.getElementById('flashcard').style.display = 'block';
+  updateStats();
+  showCard();
+}
+
+function updateStats() {
+  document.getElementById('s-correct').textContent  = '✓ ' + correct;
+  document.getElementById('s-wrong').textContent    = '✗ ' + wrong;
+  document.getElementById('s-progress').textContent = idx + ' / ' + deck.length;
+  document.getElementById('prog').style.width = Math.round((idx / deck.length) * 100) + '%';
+}
+
+function showCard() {
+  if (idx >= deck.length) { showDone(); return; }
+  answered = false;
+
+  const card = deck[idx];
+
+  // Image
+  const imgArea = document.getElementById('img-area');
+  const tag = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
+               <span class="rarity-tag ${RARITY_CLASS[card.rarity] || ''}">${RARITY_LABEL[card.rarity] || ''}</span>`;
+
+  if (card.photo) {
+    imgArea.innerHTML = `<img src="${card.photo}" alt="${card.name}" onerror="this.parentElement.innerHTML='<div class=no-photo><svg viewBox=\\'0 0 48 48\\' fill=\\'none\\' xmlns=\\'http://www.w3.org/2000/svg\\'><circle cx=\\'24\\' cy=\\'24\\' r=\\'9\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'12\\' y2=\\'6\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'24\\' y2=\\'4\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'36\\' y2=\\'6\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'12\\' y2=\\'42\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'24\\' y2=\\'44\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'36\\' y2=\\'42\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'15\\' y1=\\'24\\' x2=\\'4\\' y2=\\'19\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'15\\' y1=\\'24\\' x2=\\'4\\' y2=\\'29\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'33\\' y1=\\'24\\' x2=\\'44\\' y2=\\'19\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'33\\' y1=\\'24\\' x2=\\'44\\' y2=\\'29\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/></svg><p>Foto niet gevonden</p></div>'"> ${tag}`;
+  } else {
+    imgArea.innerHTML = `<div class="no-photo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="15" x2="12" y2="6"  stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="15" x2="24" y2="4"  stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="15" x2="36" y2="6"  stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="33" x2="12" y2="42" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="33" x2="24" y2="44" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="24" y1="33" x2="36" y2="42" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="15" y1="24" x2="4"  y2="19" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="15" y1="24" x2="4"  y2="29" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="33" y1="24" x2="44" y2="19" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="33" y1="24" x2="44" y2="29" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <p>Geen foto</p>
+    </div>${tag}`;
+  }
+
+  // Options
+  const others  = shuffle(cards.filter(c => c.name !== card.name)).slice(0, 3);
+  const choices = shuffle([card, ...others]);
+  const opts = document.getElementById('options');
+  opts.innerHTML = '';
+  choices.forEach(ch => {
+    const b = document.createElement('button');
+    b.className = 'opt';
+    b.textContent = ch.name;
+    b.dataset.name = ch.name;
+    b.onclick = () => answer(ch.name, card, b);
+    opts.appendChild(b);
+  });
+
+  const fb = document.getElementById('feedback');
+  fb.className = 'feedback';
+  fb.innerHTML = '';
+  document.getElementById('next-btn').style.display = 'none';
+}
+
+function answer(chosen, card, btn) {
+  if (answered) return;
+  answered = true;
+
+  document.querySelectorAll('.opt').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.name === card.name) b.classList.add('correct');
+  });
+
+  const fb = document.getElementById('feedback');
+  if (chosen === card.name) {
+    correct++;
+    fb.className = 'feedback correct show';
+  } else {
+    btn.classList.add('wrong');
+    wrong++;
+    fb.className = 'feedback wrong show';
+  }
+
+  fb.innerHTML = `<strong>${card.nameFull || card.name}</strong>
+    ${card.notes || ''}
+    <div class="detail-row">
+      ${card.habitat ? '<span>Habitat: ' + card.habitat + '</span>' : ''}
+      ${card.season  ? '<span>Seizoen: '  + card.season  + '</span>' : ''}
+    </div>`;
+
+  idx++;
+  updateStats();
+  document.getElementById('next-btn').style.display = 'inline-block';
+  document.getElementById('next-btn').onclick = showCard;
+}
+
+function showDone() {
+  document.getElementById('flashcard').style.display = 'none';
+  document.getElementById('done-screen').classList.add('show');
+  document.getElementById('done-score').textContent = correct;
+  document.getElementById('done-total').textContent = deck.length;
+  const pct = Math.round((correct / deck.length) * 100);
+  document.getElementById('done-msg').textContent =
+    pct === 100 ? 'Perfecte score — meester van de Opiliones!' :
+    pct >= 75   ? 'Uitstekend! Bijna een expert.' :
+    pct >= 50   ? 'Goed bezig, blijf oefenen.' :
+                  'Nog wat studeren — je komt er!';
+}
+
+loadCards();
+</script>
+</body>
+</html>
