@@ -1,74 +1,132 @@
 [
   {
     "name": "Phalangium opilio",
-    "nameFull": "Phalangium opilio (Linnaeus, 1761)",
+    "nameFull": "Phalangium opilio (Linnaeus, 1758)",
     "photo": "fotos/phalangium_opilio.jpg",
     "rarity": "common",
-    "habitat": "Tuinen, akkerranden, bosranden",
-    "season": "Juli – Oktober",
-    "notes": "Meest algemene hooiwagen in België. Vrouwtje heeft opvallende chelicerentanden. Lichaam grijsbruin met donkere rugstreep."
+    "size": "4,3-7,7 mm",
+    "habitat": "Parken, tuinen, heide, duinen, dijkhellingen, bosranden, uiterwaarden",
+    "season": "Half mei - begin december",
+    "notes": "Groot en robuust. Mannetje herkenbaar aan sikkelvormig verlengd tweede lid van de kaken. Vrouwtje mat kalkwit, bijna ongevlekt. Twee kleine tandjes op de suprachelicerale lamel. Dominant op zandige bodems. Zeer algemeen."
   },
   {
-    "name": "Leiobunum rotundum",
-    "nameFull": "Leiobunum rotundum (Latreille, 1798)",
-    "photo": "fotos/leiobunum_rotundum.jpg",
-    "rarity": "common",
-    "habitat": "Bossen, muren, holle bomen",
-    "season": "Augustus – Oktober",
-    "notes": "Rond bruin lichaam met zeer lange poten. Vrouwtje heeft donkere rugvlek. Overwintert soms in grote groepen."
+    "name": "Opilio parietinus",
+    "nameFull": "Opilio parietinus (De Geer, 1778)",
+    "photo": "fotos/opilio_parietinus.jpg",
+    "rarity": "rare",
+    "size": "4,0-7,8 mm",
+    "habitat": "Steden, dorpen, boerderijen - sterk mensgebonden",
+    "season": "Augustus - november",
+    "notes": "Groot en langbenig. Oogheuvel met twee rijen van 7-10 krachtige tanden. Kaken en palpen bovenop met stekels. Bijna uitgestorven - vrijwel volledig verdrongen door de invasieve Opilio canestrinii."
   },
   {
-    "name": "Leiobunum blackwalli",
-    "nameFull": "Leiobunum blackwalli (Meade, 1861)",
-    "photo": "fotos/leiobunum_blackwalli.jpg",
+    "name": "Opilio canestrinii",
+    "nameFull": "Opilio canestrinii (Thorell, 1876)",
+    "photo": "fotos/opilio_canestrinii.jpg",
     "rarity": "common",
-    "habitat": "Bossen, heggen, tuinmuren",
-    "season": "Augustus – Oktober",
-    "notes": "Lijkt op L. rotundum maar mannetje heeft een opvallend lichtere rugkleur. Poten relatief korter."
+    "size": "3,8-8,0 mm",
+    "habitat": "Tuinen, parken, muren, bosranden, ruderale terreinen",
+    "season": "Begin juli - februari",
+    "notes": "Middelgroot, lichtgekleurd, langbenig. Geen stekels op kaken en palpen - direct onderscheid met O. parietinus. Oogheuvel klein en vlak. Invasieve exoot uit Italie, tegenwoordig de algemeenste soort in bebouwd gebied. Zeer algemeen."
+  },
+  {
+    "name": "Rilaena triangularis",
+    "nameFull": "Rilaena triangularis (Herbst, 1799)",
+    "photo": "fotos/rilaena_triangularis.jpg",
+    "rarity": "common",
+    "size": "3,5-7,0 mm",
+    "habitat": "Bossen, parken, houtwallen, tuinen, struwelen, rivierdijken",
+    "season": "Maart - juli",
+    "notes": "Vrij fors, lichtbruin met lange poten. Oogheuvel geelbruin (niet roodbruin). Vroegste voorjaarssoort - al volwassen in maart. Tanden op palpfemur korter dan de dikte van de femur. Algemeen."
   },
   {
     "name": "Oligolophus tridens",
     "nameFull": "Oligolophus tridens (C.L. Koch, 1836)",
     "photo": "fotos/oligolophus_tridens.jpg",
     "rarity": "common",
-    "habitat": "Vochtige bossen, struikgewas, tuinen",
-    "season": "September – November",
-    "notes": "Herkenbaar aan drie kleine stekels op de voorrand van het lichaam. Donkerbruin, relatief gedrongen."
+    "size": "3,4-5,2 mm",
+    "habitat": "Bossen, houtwallen, verruigde terreinen, tuinen, parken",
+    "season": "Augustus - december",
+    "notes": "Vrij klein, korte poten. Drietand klein, middelste tand het langst, tanden dicht bij elkaar. Femora alleen met haarrijen - geen stekels. Onderkant eerste kaakslid met ventrale haak. Vaak in groepjes onder stenen en hout. Zeer algemeen."
+  },
+  {
+    "name": "Oligolophus hanseni",
+    "nameFull": "Oligolophus hanseni (Kraepelin, 1896)",
+    "photo": "fotos/oligolophus_hanseni.jpg",
+    "rarity": "common",
+    "size": "3,3-4,8 mm",
+    "habitat": "Naald- en loofbossen, tuinen, rivieroevers, verruigde heidevelden",
+    "season": "Augustus - november",
+    "notes": "Vrij klein, gemiddeld donkerder en blauwiger dan O. tridens. Mannetje gedrongener. Drietand met stompe stekels, direct ernaast nog minstens een extra tand. Droger habitat dan O. tridens. Algemeen."
   },
   {
     "name": "Paroligolophus agrestis",
     "nameFull": "Paroligolophus agrestis (Meade, 1855)",
     "photo": "fotos/paroligolophus_agrestis.jpg",
     "rarity": "common",
-    "habitat": "Graslanden, akkerranden, open terrein",
-    "season": "Juli – Oktober",
-    "notes": "Lichtbruin met vage donkere rugstreep. Veel kleiner dan Leiobunum-soorten. Typisch in open, droge biotopen."
+    "size": "2,8-4,6 mm",
+    "habitat": "Parken, bossen, duinen, graslanden, tuinen",
+    "season": "Juli - oktober",
+    "notes": "Vrij klein en gedrongen. Herkenbaar aan de gladde oogheuvel zonder tanden - alleen fijne borstelharen. Oogheuvel meestal bleekgeel. Vrouwtje contrastrijker dan mannetje. Algemeen in uiteenlopende biotopen."
+  },
+  {
+    "name": "Lacinius ephippiatus",
+    "nameFull": "Lacinius ephippiatus (C.L. Koch, 1835)",
+    "photo": "fotos/lacinius_ephippiatus.jpg",
+    "rarity": "common",
+    "size": "3,7-4,8 mm",
+    "habitat": "Bossen, kustduinen, rivierduinen - vochtminnend",
+    "season": "Eind mei - begin september",
+    "notes": "Lijkt op Oligolophus tridens. Drietand met drie bijna even lange, duidelijk gespreide tanden (bij O. tridens middelste langer). Femora met haarrijen EN stekels - bij O. tridens alleen haren. Vrij algemeen."
   },
   {
     "name": "Mitopus morio",
-    "nameFull": "Mitopus morio (Fabricius, 1779)",
+    "nameFull": "Mitopus morio (Fabricius, 1799)",
     "photo": "fotos/mitopus_morio.jpg",
     "rarity": "common",
-    "habitat": "Bossen, heidevelden, bergachtige gebieden",
-    "season": "Juli – Oktober",
-    "notes": "Zeer variabele tekening. Vaak donkere zadelvlek op rug. Eén van de meest verspreide soorten in Europa."
+    "size": "4,2-8,0 mm",
+    "habitat": "Houtwallen, ruige bermen, uiterwaarden, oevervegetaties op klei",
+    "season": "Juni - november",
+    "notes": "Fors en contrastrijk. Mannetje met gele grondkleur en pikzwarte zadeltekening, achter de oogheuvel scherp ingesnoerd. Geen duidelijke drietand maar kleine tanden voor de oogheuvel. In grote aantallen op zicht te vinden. Zeer algemeen."
   },
   {
-    "name": "Nemastoma bimaculatum",
-    "nameFull": "Nemastoma bimaculatum (Fabricius, 1775)",
-    "photo": "fotos/nemastoma_bimaculatum.jpg",
-    "rarity": "uncommon",
-    "habitat": "Vochtige bossen, onder dood hout en bladstrooisel",
+    "name": "Dicranopalpus ramosus",
+    "nameFull": "Dicranopalpus ramosus (Simon, 1909)",
+    "photo": "fotos/dicranopalpus_ramosus.jpg",
+    "rarity": "common",
+    "size": "3,0-6,0 mm",
+    "habitat": "Struikgewas, hagen, bomen, muren, weipalen",
+    "season": "Half augustus - februari",
+    "notes": "Onmiskenbaar: rusthouding met alle poten evenwijdig zijdelings uitgestrekt. Palppatella met lang uitsteeksel waardoor de palp gevorkt lijkt. Invasieve exoot. Zelfs juvenielen direct herkenbaar. Zeer algemeen."
+  },
+  {
+    "name": "Leiobunum rotundum",
+    "nameFull": "Leiobunum rotundum (Latreille, 1798)",
+    "photo": "fotos/leiobunum_rotundum.jpg",
+    "rarity": "common",
+    "size": "3,0-5,5 mm — poot II: 45-60 mm",
+    "habitat": "Tuinen, parken, muren, bruggen, hagen, oevervegetaties",
+    "season": "Eind juni - eind november",
+    "notes": "Vrij fors, zeer lange poten. Oogheuvel zwart met lichte mediane band. Mannetje egaal roodbruin, trochanters zwart (onderscheid met Opilio canestrinii). Vormt soms aggregaties van honderden individuen. Zeer algemeen."
+  },
+  {
+    "name": "Leiobunum blackwalli",
+    "nameFull": "Leiobunum blackwalli (Meade, 1861)",
+    "photo": "fotos/leiobunum_blackwalli.jpg",
+    "rarity": "common",
+    "size": "2,5-5,2 mm — poot II tot 50 mm",
+    "habitat": "Loofbossen met dichte ondergroei, onder hout en stenen",
+    "season": "Eind juli - begin januari",
+    "notes": "Middelgroot, fijner gebouwd dan L. rotundum. Oogheuvel licht met donkere middenstreep, ogen donker omrand. Mannetje egaal roodbruin. Minder algemeen in stedelijk gebied dan L. rotundum. Vrij algemeen."
+  },
+  {
+    "name": "Nemastoma lugubre",
+    "nameFull": "Nemastoma lugubre (Müller, 1776)",
+    "photo": "fotos/nemastoma_lugubre.jpg",
+    "rarity": "common",
+    "size": "1,5-2,4 mm",
+    "habitat": "Loof- en naaldbossen, graslanden, oevers, parken - vochtige bodems",
     "season": "Het hele jaar",
-    "notes": "Klein en donker met twee witte vlekjes op de rug. Korte poten. Leeft verborgen onder stenen en hout."
-  },
-  {
-    "name": "Anelasmocephalus cambridgei",
-    "nameFull": "Anelasmocephalus cambridgei (Westwood, 1874)",
-    "photo": "fotos/anelasmocephalus_cambridgei.jpg",
-    "rarity": "rare",
-    "habitat": "Kalkrijke bossen, onder stenen op kalkbodem",
-    "season": "Voorjaar – Zomer",
-    "notes": "Zeldzame en kleine soort. Lichtbruin, bijna zonder oogtuberkels. Sterk gebonden aan kalkrijke biotopen."
+    "notes": "Klein, zwart en kortbenig. Twee witte rugvlekken, afgerond rechthoekig, vrijwel nooit ingekeept aan de buitenzijde (onderscheid met N. bimaculatum). Rugzijde vrij grof gegranuleerd. Bodem- en strooiselbewoner. Waarschijnlijk algemeen in het hele land."
   }
 ]
