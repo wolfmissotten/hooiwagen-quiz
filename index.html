@@ -500,15 +500,23 @@ function renderPhotoFrame() {
   const tag = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
                <span class="rarity-tag ${RARITY_CLASS[currentCard.rarity] || ''}">${RARITY_LABEL[currentCard.rarity] || ''}</span>`;
 
+  function showNoPhoto(message) {
+    imgArea.innerHTML = `<div class="no-photo">${NO_PHOTO_SVG}<p>${message}</p></div>${tag}`;
+  }
+
   if (!currentPhotos.length) {
-    imgArea.innerHTML = `<div class="no-photo">${NO_PHOTO_SVG}<p>Geen foto</p></div>${tag}`;
+    showNoPhoto('Geen foto');
     return;
   }
 
-  const src = currentPhotos[currentPhotoIdx];
-  imgArea.innerHTML = `<img src="${src}" alt="${currentCard.name}"
-    onerror="this.parentElement.innerHTML='<div class=no-photo>${NO_PHOTO_SVG.replace(/'/g, "\\'")}<p>Foto niet gevonden</p></div>'">
-    ${tag}`;
+  // Bouw de <img> via de DOM op (niet als HTML-string), zodat de SVG met
+  // dubbele aanhalingstekens in het onerror-attribuut niet voor problemen zorgt.
+  imgArea.innerHTML = tag;
+  const img = document.createElement('img');
+  img.alt = currentCard.name;
+  img.onerror = () => showNoPhoto('Foto niet gevonden');
+  img.src = currentPhotos[currentPhotoIdx];
+  imgArea.prepend(img);
 }
 
 async function showCard() {
