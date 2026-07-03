@@ -171,7 +171,7 @@
     backdrop-filter: blur(4px);
   }
 
-  .rarity-tag {
+  .retry-tag {
     position: absolute;
     top: 12px;
     left: 12px;
@@ -180,11 +180,9 @@
     border-radius: 2px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
+    background: #e8dfc2cc;
+    color: #4a3818;
   }
-
-  .tag-common   { background: #d4e8c2cc; color: #2a4a18; }
-  .tag-uncommon { background: #e8dfc2cc; color: #4a3818; }
-  .tag-rare     { background: #e8c2c2cc; color: #4a1818; }
 
   .card-body { padding: 1.5rem; }
 
@@ -404,13 +402,16 @@
 </main>
 
 <script>
-const RARITY_LABEL = { common: 'Gewoon', uncommon: 'Ongewoon', rare: 'Zeldzaam' };
-const RARITY_CLASS = { common: 'tag-common', uncommon: 'tag-uncommon', rare: 'tag-rare' };
-
 let cards = [];
 let deck  = [];
 let idx = 0, correct = 0, wrong = 0;
 let answered = false;
+
+// Kaarten die fout beantwoord zijn, komen aan het einde van de sessie
+// nog een keer terug (in een nieuwe, geschudde herkansingsronde) totdat
+// alles minstens één keer goed is beantwoord.
+let wrongCards = [];
+let firstPassLength = 0;
 
 // Elke soort heeft een map met genummerde foto's (fotos/<slug>/1.jpg, 2.jpg, ...).
 // We proberen gewoon oplopende nummers tot er eentje niet bestaat (geen aparte
@@ -467,6 +468,8 @@ function shuffle(arr) {
 function startLearning() {
   deck = shuffle(cards);
   idx = 0; correct = 0; wrong = 0; answered = false;
+  wrongCards = [];
+  firstPassLength = deck.length;
   document.getElementById('status').style.display = 'none';
   document.getElementById('done-screen').classList.remove('show');
   document.getElementById('flashcard').style.display = 'block';
@@ -495,10 +498,14 @@ const NO_PHOTO_SVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.
   <line x1="33" y1="24" x2="44" y2="29" stroke="currentColor" stroke-width="1.5"/>
 </svg>`;
 
+function photoTag() {
+  const retry = idx >= firstPassLength ? '<span class="retry-tag">Herkansing</span>' : '';
+  return `<span class="card-counter">${idx + 1} / ${deck.length}</span>${retry}`;
+}
+
 function renderPhotoFrame() {
   const imgArea = document.getElementById('img-area');
-  const tag = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
-               <span class="rarity-tag ${RARITY_CLASS[currentCard.rarity] || ''}">${RARITY_LABEL[currentCard.rarity] || ''}</span>`;
+  const tag = photoTag();
 
   function showNoPhoto(message) {
     imgArea.innerHTML = `<div class="no-photo">${NO_PHOTO_SVG}<p>${message}</p></div>${tag}`;
@@ -520,7 +527,16 @@ function renderPhotoFrame() {
 }
 
 async function showCard() {
-  if (idx >= deck.length) { showDone(); return; }
+  if (idx >= deck.length) {
+    if (wrongCards.length) {
+      // Herkansingsronde: alle fout beantwoorde kaarten komen geschud terug.
+      deck = deck.concat(shuffle(wrongCards));
+      wrongCards = [];
+    } else {
+      showDone();
+      return;
+    }
+  }
   answered = false;
 
   const card = deck[idx];
@@ -528,8 +544,7 @@ async function showCard() {
 
   // Foto's uit fotos/<slug>/1.jpg, 2.jpg, ... ophalen, telkens één willekeurig kiezen
   const imgArea = document.getElementById('img-area');
-  imgArea.innerHTML = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
-               <span class="rarity-tag ${RARITY_CLASS[card.rarity] || ''}">${RARITY_LABEL[card.rarity] || ''}</span>`;
+  imgArea.innerHTML = photoTag();
   currentPhotos = await loadPhotos(card.photoFolder);
   currentPhotoIdx = currentPhotos.length ? Math.floor(Math.random() * currentPhotos.length) : 0;
   if (currentCard === card) renderPhotoFrame(); // negeer als ondertussen al doorgeklikt is
@@ -570,12 +585,14 @@ function answer(chosen, card, btn) {
   } else {
     btn.classList.add('wrong');
     wrong++;
+    wrongCards.push(card);
     fb.className = 'feedback wrong show';
   }
 
   fb.innerHTML = `<strong>${card.nameFull || card.name}</strong>
     ${card.notes || ''}
     <div class="detail-row">
+      ${card.rarity  ? '<span>Zeldzaamheid: ' + card.rarity  + '</span>' : ''}
       ${card.habitat ? '<span>Habitat: ' + card.habitat + '</span>' : ''}
       ${card.season  ? '<span>Seizoen: '  + card.season  + '</span>' : ''}
     </div>`;
