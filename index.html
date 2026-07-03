@@ -186,6 +186,50 @@
   .tag-uncommon { background: #e8dfc2cc; color: #4a3818; }
   .tag-rare     { background: #e8c2c2cc; color: #4a1818; }
 
+  .photo-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(26,22,16,0.55);
+    color: #faf7f2;
+    border: none;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .photo-nav:hover { background: rgba(26,22,16,0.8); }
+  .photo-nav.prev  { left: 12px; }
+  .photo-nav.next  { right: 12px; }
+
+  .photo-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+  }
+
+  .photo-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(250,247,242,0.5);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .photo-dots .dot.active { background: #faf7f2; }
+
   .card-body { padding: 1.5rem; }
 
   .card-question {
@@ -412,6 +456,33 @@ let deck  = [];
 let idx = 0, correct = 0, wrong = 0;
 let answered = false;
 
+// Foto-galerij per kaart: elke soort heeft een map met genummerde foto's
+// (fotos/<slug>/1.jpg, 2.jpg, ...). We proberen gewoon oplopende nummers
+// tot er eentje niet bestaat, dus er is geen aparte lijst per soort nodig.
+const MAX_PHOTOS_PER_CARD = 12;
+let currentCard = null;
+let currentPhotos = [];
+let currentPhotoIdx = 0;
+
+function checkImage(url) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload  = () => resolve(url);
+    img.onerror = () => resolve(null);
+    img.src = url;
+  });
+}
+
+async function loadPhotos(folder) {
+  if (!folder) return [];
+  const checks = [];
+  for (let i = 1; i <= MAX_PHOTOS_PER_CARD; i++) {
+    checks.push(checkImage(folder + i + '.jpg'));
+  }
+  const results = await Promise.all(checks);
+  return results.filter(Boolean);
+}
+
 async function loadCards() {
   try {
     const res = await fetch('cards.json');
@@ -453,37 +524,66 @@ function updateStats() {
   document.getElementById('prog').style.width = Math.round((idx / deck.length) * 100) + '%';
 }
 
-function showCard() {
+const NO_PHOTO_SVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="15" x2="12" y2="6"  stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="15" x2="24" y2="4"  stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="15" x2="36" y2="6"  stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="33" x2="12" y2="42" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="33" x2="24" y2="44" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="24" y1="33" x2="36" y2="42" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="15" y1="24" x2="4"  y2="19" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="15" y1="24" x2="4"  y2="29" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="33" y1="24" x2="44" y2="19" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="33" y1="24" x2="44" y2="29" stroke="currentColor" stroke-width="1.5"/>
+</svg>`;
+
+function renderPhotoFrame() {
+  const imgArea = document.getElementById('img-area');
+  const tag = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
+               <span class="rarity-tag ${RARITY_CLASS[currentCard.rarity] || ''}">${RARITY_LABEL[currentCard.rarity] || ''}</span>`;
+
+  if (!currentPhotos.length) {
+    imgArea.innerHTML = `<div class="no-photo">${NO_PHOTO_SVG}<p>Geen foto</p></div>${tag}`;
+    return;
+  }
+
+  const src = currentPhotos[currentPhotoIdx];
+  let nav = '';
+  if (currentPhotos.length > 1) {
+    const dots = currentPhotos.map((_, i) =>
+      `<button class="dot${i === currentPhotoIdx ? ' active' : ''}" onclick="changePhoto(${i - currentPhotoIdx})"></button>`
+    ).join('');
+    nav = `<button class="photo-nav prev" onclick="changePhoto(-1)">‹</button>
+           <button class="photo-nav next" onclick="changePhoto(1)">›</button>
+           <div class="photo-dots">${dots}</div>`;
+  }
+
+  imgArea.innerHTML = `<img src="${src}" alt="${currentCard.name}"
+    onerror="this.parentElement.innerHTML='<div class=no-photo>${NO_PHOTO_SVG.replace(/'/g, "\\'")}<p>Foto niet gevonden</p></div>'">
+    ${tag}${nav}`;
+}
+
+function changePhoto(delta) {
+  if (!currentPhotos.length) return;
+  currentPhotoIdx = (currentPhotoIdx + delta + currentPhotos.length) % currentPhotos.length;
+  renderPhotoFrame();
+}
+
+async function showCard() {
   if (idx >= deck.length) { showDone(); return; }
   answered = false;
 
   const card = deck[idx];
+  currentCard = card;
 
-  // Image
+  // Foto's uit fotos/<slug>/1.jpg, 2.jpg, ... ophalen
   const imgArea = document.getElementById('img-area');
-  const tag = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
+  imgArea.innerHTML = `<span class="card-counter">${idx + 1} / ${deck.length}</span>
                <span class="rarity-tag ${RARITY_CLASS[card.rarity] || ''}">${RARITY_LABEL[card.rarity] || ''}</span>`;
-
-  if (card.photo) {
-    imgArea.innerHTML = `<img src="${card.photo}" alt="${card.name}" onerror="this.parentElement.innerHTML='<div class=no-photo><svg viewBox=\\'0 0 48 48\\' fill=\\'none\\' xmlns=\\'http://www.w3.org/2000/svg\\'><circle cx=\\'24\\' cy=\\'24\\' r=\\'9\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'12\\' y2=\\'6\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'24\\' y2=\\'4\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'15\\' x2=\\'36\\' y2=\\'6\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'12\\' y2=\\'42\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'24\\' y2=\\'44\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'24\\' y1=\\'33\\' x2=\\'36\\' y2=\\'42\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'15\\' y1=\\'24\\' x2=\\'4\\' y2=\\'19\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'15\\' y1=\\'24\\' x2=\\'4\\' y2=\\'29\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'33\\' y1=\\'24\\' x2=\\'44\\' y2=\\'19\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/><line x1=\\'33\\' y1=\\'24\\' x2=\\'44\\' y2=\\'29\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'/></svg><p>Foto niet gevonden</p></div>'"> ${tag}`;
-  } else {
-    imgArea.innerHTML = `<div class="no-photo">
-      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="15" x2="12" y2="6"  stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="15" x2="24" y2="4"  stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="15" x2="36" y2="6"  stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="33" x2="12" y2="42" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="33" x2="24" y2="44" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="24" y1="33" x2="36" y2="42" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="15" y1="24" x2="4"  y2="19" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="15" y1="24" x2="4"  y2="29" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="33" y1="24" x2="44" y2="19" stroke="currentColor" stroke-width="1.5"/>
-        <line x1="33" y1="24" x2="44" y2="29" stroke="currentColor" stroke-width="1.5"/>
-      </svg>
-      <p>Geen foto</p>
-    </div>${tag}`;
-  }
+  currentPhotos = await loadPhotos(card.photoFolder);
+  currentPhotoIdx = 0;
+  if (currentCard === card) renderPhotoFrame(); // negeer als ondertussen al doorgeklikt is
 
   // Options
   const others  = shuffle(cards.filter(c => c.name !== card.name)).slice(0, 3);

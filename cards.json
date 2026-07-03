@@ -2,7 +2,7 @@
   {
     "name": "Nemastoma bimaculatum",
     "nameFull": "Nemastoma bimaculatum (Fabricius, 1775)",
-    "photo": "fotos/nemastoma_bimaculatum.jpg",
+    "photoFolder": "fotos/nemastoma_bimaculatum/",
     "rarity": "Een van de meest verbreide en talrijke soorten in België",
     "habitat": "Bodem- en strooiselbewoner. Vereist hoge relatieve vochtigheid",
     "season": "Het hele jaar",
@@ -11,7 +11,7 @@
   {
     "name": "Nemastoma lugubre",
     "nameFull": "Nemastoma lugubre (Müller, 1776)",
-    "photo": "fotos/nemastoma_lugubre.jpg",
+    "photoFolder": "fotos/nemastoma_lugubre/",
     "rarity": "Behoort tot de meest algemene soorten in België",
     "habitat": "Bodem- en strooiselbewoner. Vereist hoge relatieve vochtigheid",
     "season": "Het hele jaar",
@@ -20,7 +20,7 @@
   {
     "name": "Nemastoma dentigerum",
     "nameFull": "Nemastoma dentigerum Canestrini, 1873",
-    "photo": "fotos/nemastoma_dentigerum.jpg",
+    "photoFolder": "fotos/nemastoma_dentigerum/",
     "rarity": "Zeer zeldzaam. Voor het eerst in België sinds 2014 (Vanhercke & Baert, 2015)",
     "habitat": "Bodem- en strooiselbewoner. Voorkeur voor open gebieden en struwelen.",
     "season": "Het hele jaar",
@@ -29,7 +29,7 @@
   {
     "name": "Paranemastoma quadripunctatum",
     "nameFull": "Paranemastoma quadripunctatum (Perty, 1833)",
-    "photo": "fotos/paranemastoma_quadripunctatum.jpg",
+    "photoFolder": "fotos/paranemastoma_quadripunctatum/",
     "rarity": "Zeldzaam",
     "habitat": "In het strooisel van vochtige loof- en gemengde bossen, vaak in de directe omgeving van open water.",
     "season": "Het hele jaar",
@@ -38,7 +38,7 @@
   {
     "name": "Mitostoma chrysomelas",
     "nameFull": "Mitostoma chrysomelas (Hermann, 1804)",
-    "photo": "fotos/mitostoma_chrysomelas.jpg",
+    "photoFolder": "fotos/mitostoma_chrysomelas/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Strooisel, vaak onder hout",
     "season": "Het hele jaar",
@@ -47,7 +47,7 @@
   {
     "name": "Trogulus tricarinatus",
     "nameFull": "Trogulus tricarinatus (Linnaeus, 1767)",
-    "photo": "fotos/trogulus_tricarinatus.jpg",
+    "photoFolder": "fotos/trogulus_tricarinatus/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Strooisel, onder stenen en hout. Eerder open gebieden rond waterlichamen dan in bossen.",
     "season": "Het hele jaar",
@@ -56,7 +56,7 @@
   {
     "name": "Trogulus nepaeformis",
     "nameFull": "Trogulus nepaeformis (Scopoli, 1763) s.l.",
-    "photo": "fotos/trogulus_nepaeformis.jpg",
+    "photoFolder": "fotos/trogulus_nepaeformis/",
     "rarity": "Eerder zeldzaam, vermoedelijk ondergedetermineerd door verwarring met T. tricarinatus",
     "habitat": "Strooisel, onder stenen en hout. Vochtige loofbossen",
     "season": "Het hele jaar",
@@ -65,7 +65,7 @@
   {
     "name": "Anelasmocephalus cambridgei",
     "nameFull": "Anelasmocephalus cambridgei (Westwood, 1874)",
-    "photo": "fotos/anelasmocephalus_cambridgei.jpg",
+    "photoFolder": "fotos/anelasmocephalus_cambridgei/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Jaagt in strooisel op huisjesslakken",
     "season": "Het hele jaar",
@@ -78,7 +78,7 @@
   {
     "name": "Phalangium opilio",
     "nameFull": "Phalangium opilio Linnaeus, 1758",
-    "photo": "fotos/phalangium_opilio.jpg",
+    "photoFolder": "fotos/phalangium_opilio/",
     "rarity": "Algemeen",
     "habitat": "Open tot halfopen plaatsen, eerder warmte- en droogteminnend",
     "season": "Half mei - begin december, een van de vroegste 'zomersoorten'.",
@@ -87,7 +87,7 @@
   {
     "name": "Opilio saxatilis",
     "nameFull": "Opilio saxatilis C.L. Koch, 1839",
-    "photo": "fotos/opilio_saxatilis.jpg",
+    "photoFolder": "fotos/opilio_saxatilis/",
     "rarity": "Vrij algemeen",
     "habitat": "Droge, open terreinen (duinen, open bossen, etc) ",
     "season": "Juli - december",
@@ -96,7 +96,7 @@
   {
     "name": "Opilio canestrinii",
     "nameFull": "Opilio canestrinii (Thorell, 1876)",
-    "photo": "fotos/opilio_canestrinii.jpg",
+    "photoFolder": "fotos/opilio_canestrinii/",
     "rarity": "Zeer algemeen, nochtans pas sinds de jaren 80 of 90 in België",
     "habitat": "Zowel natuurlijke als meer urbane terreinen",
     "season": "Begin juli - februari",
@@ -105,7 +105,7 @@
   {
     "name": "Platybunus pinetorum",
     "nameFull": "Platybunus pinetorum (C.L. Koch, 1839)",
-    "photo": "fotos/platybunus_pinetorum.jpg",
+    "photoFolder": "fotos/platybunus_pinetorum/",
     "rarity": "Zeldzaam maar breidt zich uit sinds eerste waarneming in 1992",
     "habitat": "Boomstammen en struiken",
     "season": "Eind maart - eind juni",
@@ -114,7 +114,7 @@
   {
     "name": "Rilaena triangularis",
     "nameFull": "Rilaena triangularis (Herbst, 1799)",
-    "photo": "fotos/rilaena_triangularis.jpg",
+    "photoFolder": "fotos/rilaena_triangularis/",
     "rarity": "De meest verbreide en talrijkste soort in België",
     "habitat": "Breed scala aan biotopen",
     "season": "Maart - juli",
@@ -123,7 +123,7 @@
   {
     "name": "Lophopilio palpinalis",
     "nameFull": "Lophopilio palpinalis (Herbst, 1799)",
-    "photo": "fotos/lophopilio_palpinalis.jpg",
+    "photoFolder": "fotos/lophopilio_palpinalis/",
     "rarity": "Zeer algemeen",
     "habitat": "Breed scala aan biotopen",
     "season": "Augustus - januari",
@@ -132,9 +132,10 @@
   {
     "name": "Oligolophus tridens",
     "nameFull": "Oligolophus tridens (C.L. Koch, 1836)",
-    "photo": "fotos/oligolophus_tridens.jpg",
+    "photoFolder": "fotos/oligolophus_tridens/",
     "rarity": "Zeer algemeen",
     "habitat": "Breed scala aan biotopen",
     "season": "Augustus - december",
     "notes": "Klein en kortbenig. Mannetjes hebben redelijk distinctieve zadeltekening die eindigt in twee halve cirkels. Drietand klein, middelste tand het langst (>< L. ephippiatus die een gelijkaardig uiterlijk heeft, maar met drie ±even lange grote tanden). "
   }
+]
