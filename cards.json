@@ -145,7 +145,7 @@
   {
     "name": "Oligolophus hanseni",
     "nameFull": "Oligolophus hanseni (Kraepelin, 1896)",
-    "photo": "fotos/oligolophus_hanseni/",
+    "photoFolder": "fotos/oligolophus_hanseni/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Breed scala aan biotopen, gemiddeld iets droger dan O. tridens.",
     "season": "September - februari",
@@ -154,7 +154,7 @@
   {
     "name": "Paroligolophus agrestis",
     "nameFull": "Paroligolophus agrestis (Meade, 1855)",
-    "photo": "fotos/paroligolophus_agrestis/",
+    "photoFolder": "fotos/paroligolophus_agrestis/",
     "rarity": "Algemeen",
     "habitat": "Breed scala aan biotopen",
     "season": "Juli - februari",
@@ -164,7 +164,7 @@
   {
     "name": "Lacinius ephippiatus",
     "nameFull": "Lacinius ephippiatus (C.L. Koch, 1835)",
-    "photo": "fotos/lacinius_ephippiatus/",
+    "photoFolder": "fotos/lacinius_ephippiatus/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Vochtminnend, strooisellaag en kruidlaag",
     "season": "Eind mei - begin september",
@@ -174,7 +174,7 @@
   {
     "name": "Odiellus spinosus",
     "nameFull": "Odiellus spinosus (Bosc d'Antic, 1792)",
-    "photo": "fotos/odiellus_spinosus/",
+    "photoFolder": "fotos/odiellus_spinosus/",
     "rarity": "Vrij algemeen",
     "habitat": "Warme, droge en zandige terreinen, tuinen, begraafplaatsen",
     "season": "Juli - december",
@@ -183,7 +183,7 @@
   {
     "name": "Mitopus morio",
     "nameFull": "Mitopus morio (Fabricius, 1799)",
-    "photo": "fotos/mitopus_morio/",
+    "photoFolder": "fotos/mitopus_morio/",
     "rarity": "Vrij algemeen",
     "habitat": "Houtwallen, ruige bermen, uiterwaarden, oevervegetaties op klei",
     "season": "Juni - november",
