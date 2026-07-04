@@ -372,6 +372,73 @@
 
   .restart-btn:hover { opacity: 0.8; }
 
+  .switch-group-row { margin-top: 1.25rem; }
+
+  .switch-group-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    background: none;
+    border: none;
+    color: var(--ink3);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+  }
+
+  .switch-group-btn:hover { color: var(--ink); }
+
+  /* Groepskeuze */
+  .select-screen {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 0;
+  }
+
+  .select-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1.5rem;
+  }
+
+  .select-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .select-btn {
+    font-family: var(--mono);
+    font-size: 14px;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--ink3);
+    border-radius: 0;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+  }
+
+  .select-btn span {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink3);
+    margin-top: 3px;
+  }
+
+  .select-btn:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .select-btn:hover span { color: var(--bg2); }
+
   /* Error / loading */
   .status-msg {
     text-align: center;
@@ -424,6 +491,21 @@
       <strong>Kaarten laden…</strong>
     </div>
 
+    <div class="select-screen" id="select-screen" style="display:none">
+      <div class="select-title">Welke groep wil je oefenen?</div>
+      <div class="select-options">
+        <button class="select-btn" onclick="startGroup('phalangiidae')">
+          Echte hooiwagens<span>familie Phalangiidae</span>
+        </button>
+        <button class="select-btn" onclick="startGroup('rest')">
+          De rest<span>overige families</span>
+        </button>
+        <button class="select-btn" onclick="startGroup('alles')">
+          Alles door elkaar<span>alle families samen</span>
+        </button>
+      </div>
+    </div>
+
     <div class="flashcard" id="flashcard" style="display:none">
       <div class="card-image-area" id="img-area"></div>
       <div class="card-body">
@@ -442,13 +524,17 @@
       <div class="done-label">correct van <span id="done-total">0</span></div>
       <div class="done-msg" id="done-msg"></div>
       <button class="restart-btn" onclick="startLearning()">Opnieuw beginnen</button>
+      <div class="switch-group-row">
+        <button class="switch-group-btn" onclick="backToGroupSelect()">Andere groep kiezen</button>
+      </div>
     </div>
 
   </div>
 </main>
 
 <script>
-let cards = [];
+let cards = [];       // alle soorten, ongefilterd
+let activeCards = []; // de gekozen groep waaruit deze sessie geput wordt
 let deck  = [];
 let idx = 0, correct = 0, wrong = 0;
 let answered = false;
@@ -495,7 +581,8 @@ async function loadCards() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     cards = await res.json();
     if (!cards.length) throw new Error('Geen kaarten gevonden');
-    startLearning();
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('select-screen').style.display = 'block';
   } catch (e) {
     document.getElementById('status').innerHTML =
       '<strong>cards.json niet gevonden</strong>' +
@@ -513,12 +600,32 @@ function shuffle(arr) {
   return a;
 }
 
+// group: 'phalangiidae' (echte hooiwagens), 'rest' (overige families) of 'alles'
+function startGroup(group) {
+  if (group === 'phalangiidae') {
+    activeCards = cards.filter(c => c.family === 'Phalangiidae');
+  } else if (group === 'rest') {
+    activeCards = cards.filter(c => c.family !== 'Phalangiidae');
+  } else {
+    activeCards = cards;
+  }
+  document.getElementById('select-screen').style.display = 'none';
+  startLearning();
+}
+
+function backToGroupSelect() {
+  document.getElementById('done-screen').classList.remove('show');
+  document.getElementById('flashcard').style.display = 'none';
+  document.getElementById('select-screen').style.display = 'block';
+}
+
 function startLearning() {
-  deck = shuffle(cards);
+  deck = shuffle(activeCards);
   idx = 0; correct = 0; wrong = 0; answered = false;
   wrongCards = [];
   firstPassLength = deck.length;
   document.getElementById('status').style.display = 'none';
+  document.getElementById('select-screen').style.display = 'none';
   document.getElementById('done-screen').classList.remove('show');
   document.getElementById('flashcard').style.display = 'block';
   updateStats();
@@ -597,8 +704,8 @@ async function showCard() {
   currentPhotoIdx = currentPhotos.length ? Math.floor(Math.random() * currentPhotos.length) : 0;
   if (currentCard === card) renderPhotoFrame(); // negeer als ondertussen al doorgeklikt is
 
-  // Options
-  const others  = shuffle(cards.filter(c => c.name !== card.name)).slice(0, 3);
+  // Options (afleiders komen uit dezelfde gekozen groep)
+  const others  = shuffle(activeCards.filter(c => c.name !== card.name)).slice(0, 3);
   const choices = shuffle([card, ...others]);
   const opts = document.getElementById('options');
   opts.innerHTML = '';

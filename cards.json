@@ -2,6 +2,7 @@
   {
     "name": "Nemastoma bimaculatum",
     "nameFull": "Nemastoma bimaculatum (Fabricius, 1775)",
+    "family": "Nemastomatidae",
     "photoFolder": "fotos/nemastoma_bimaculatum/",
     "rarity": "Een van de meest verbreide en talrijke soorten in België",
     "habitat": "Bodem- en strooiselbewoner. Vereist hoge relatieve vochtigheid",
@@ -11,6 +12,7 @@
   {
     "name": "Nemastoma lugubre",
     "nameFull": "Nemastoma lugubre (Müller, 1776)",
+    "family": "Nemastomatidae",
     "photoFolder": "fotos/nemastoma_lugubre/",
     "rarity": "Behoort tot de meest algemene soorten in België",
     "habitat": "Bodem- en strooiselbewoner. Vereist hoge relatieve vochtigheid",
@@ -20,6 +22,7 @@
   {
     "name": "Nemastoma dentigerum",
     "nameFull": "Nemastoma dentigerum Canestrini, 1873",
+    "family": "Nemastomatidae",
     "photoFolder": "fotos/nemastoma_dentigerum/",
     "rarity": "Zeer zeldzaam. Voor het eerst in België sinds 2014 (Vanhercke & Baert, 2015)",
     "habitat": "Bodem- en strooiselbewoner. Voorkeur voor open gebieden en struwelen.",
@@ -29,6 +32,7 @@
   {
     "name": "Paranemastoma quadripunctatum",
     "nameFull": "Paranemastoma quadripunctatum (Perty, 1833)",
+    "family": "Nemastomatidae",
     "photoFolder": "fotos/paranemastoma_quadripunctatum/",
     "rarity": "Zeldzaam",
     "habitat": "In het strooisel van vochtige loof- en gemengde bossen, vaak in de directe omgeving van open water.",
@@ -38,6 +42,7 @@
   {
     "name": "Mitostoma chrysomelas",
     "nameFull": "Mitostoma chrysomelas (Hermann, 1804)",
+    "family": "Nemastomatidae",
     "photoFolder": "fotos/mitostoma_chrysomelas/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Strooisel, vaak onder hout",
@@ -47,6 +52,7 @@
   {
     "name": "Trogulus tricarinatus",
     "nameFull": "Trogulus tricarinatus (Linnaeus, 1767)",
+    "family": "Trogulidae",
     "photoFolder": "fotos/trogulus_tricarinatus/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Strooisel, onder stenen en hout. Eerder open gebieden rond waterlichamen dan in bossen.",
@@ -56,6 +62,7 @@
   {
     "name": "Trogulus nepaeformis",
     "nameFull": "Trogulus nepaeformis (Scopoli, 1763) s.l.",
+    "family": "Trogulidae",
     "photoFolder": "fotos/trogulus_nepaeformis/",
     "rarity": "Eerder zeldzaam, vermoedelijk ondergedetermineerd door verwarring met T. tricarinatus",
     "habitat": "Strooisel, onder stenen en hout. Vochtige loofbossen",
@@ -65,6 +72,7 @@
   {
     "name": "Anelasmocephalus cambridgei",
     "nameFull": "Anelasmocephalus cambridgei (Westwood, 1874)",
+    "family": "Trogulidae",
     "photoFolder": "fotos/anelasmocephalus_cambridgei/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Jaagt in strooisel op huisjesslakken",
@@ -78,6 +86,7 @@
   {
     "name": "Phalangium opilio",
     "nameFull": "Phalangium opilio Linnaeus, 1758",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/phalangium_opilio/",
     "rarity": "Algemeen",
     "habitat": "Open tot halfopen plaatsen, eerder warmte- en droogteminnend",
@@ -87,6 +96,7 @@
   {
     "name": "Opilio saxatilis",
     "nameFull": "Opilio saxatilis C.L. Koch, 1839",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/opilio_saxatilis/",
     "rarity": "Vrij algemeen",
     "habitat": "Droge, open terreinen (duinen, open bossen, etc) ",
@@ -96,6 +106,7 @@
   {
     "name": "Opilio canestrinii",
     "nameFull": "Opilio canestrinii (Thorell, 1876)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/opilio_canestrinii/",
     "rarity": "Zeer algemeen, nochtans pas sinds de jaren 80 of 90 in België",
     "habitat": "Zowel natuurlijke als meer urbane terreinen",
@@ -105,6 +116,7 @@
   {
     "name": "Platybunus pinetorum",
     "nameFull": "Platybunus pinetorum (C.L. Koch, 1839)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/platybunus_pinetorum/",
     "rarity": "Zeldzaam maar breidt zich uit sinds eerste waarneming in 1992",
     "habitat": "Boomstammen en struiken",
@@ -114,6 +126,7 @@
   {
     "name": "Rilaena triangularis",
     "nameFull": "Rilaena triangularis (Herbst, 1799)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/rilaena_triangularis/",
     "rarity": "De meest verbreide en talrijkste soort in België",
     "habitat": "Breed scala aan biotopen",
@@ -123,6 +136,7 @@
   {
     "name": "Lophopilio palpinalis",
     "nameFull": "Lophopilio palpinalis (Herbst, 1799)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/lophopilio_palpinalis/",
     "rarity": "Zeer algemeen volgens Vanhercke (2010), maar lijkt tegenwoordig zeldzaam",
     "habitat": "Breed scala aan biotopen",
@@ -132,6 +146,7 @@
   {
     "name": "Oligolophus tridens",
     "nameFull": "Oligolophus tridens (C.L. Koch, 1836)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/oligolophus_tridens/",
     "rarity": "Zeer algemeen",
     "habitat": "Breed scala aan biotopen",
@@ -145,6 +160,7 @@
   {
     "name": "Oligolophus hanseni",
     "nameFull": "Oligolophus hanseni (Kraepelin, 1896)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/oligolophus_hanseni/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Breed scala aan biotopen, gemiddeld iets droger dan O. tridens.",
@@ -154,6 +170,7 @@
   {
     "name": "Paroligolophus agrestis",
     "nameFull": "Paroligolophus agrestis (Meade, 1855)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/paroligolophus_agrestis/",
     "rarity": "Algemeen",
     "habitat": "Breed scala aan biotopen",
@@ -164,6 +181,7 @@
   {
     "name": "Lacinius ephippiatus",
     "nameFull": "Lacinius ephippiatus (C.L. Koch, 1835)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/lacinius_ephippiatus/",
     "rarity": "Eerder zeldzaam",
     "habitat": "Vochtminnend, strooisellaag en kruidlaag",
@@ -174,6 +192,7 @@
   {
     "name": "Odiellus spinosus",
     "nameFull": "Odiellus spinosus (Bosc d'Antic, 1792)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/odiellus_spinosus/",
     "rarity": "Vrij algemeen",
     "habitat": "Warme, droge en zandige terreinen, tuinen, begraafplaatsen",
@@ -183,6 +202,7 @@
   {
     "name": "Mitopus morio",
     "nameFull": "Mitopus morio (Fabricius, 1799)",
+    "family": "Phalangiidae",
     "photoFolder": "fotos/mitopus_morio/",
     "rarity": "Vrij algemeen",
     "habitat": "Houtwallen, ruige bermen, uiterwaarden, oevervegetaties op klei",
