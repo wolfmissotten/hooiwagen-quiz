@@ -233,6 +233,30 @@
   .opt.wrong   { background: var(--bad-bg);  border-color: var(--bad);  color: var(--bad); }
   .opt:disabled { cursor: default; }
 
+  .dontknow-btn {
+    display: block;
+    width: 100%;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    padding: 9px 12px;
+    margin-bottom: 1rem;
+    background: none;
+    border: 1px dashed var(--ink3);
+    border-radius: 0;
+    color: var(--ink3);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+  }
+
+  .dontknow-btn:hover:not(:disabled) {
+    background: var(--bg2);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .dontknow-btn:disabled { cursor: default; opacity: 0.4; }
+
   /* Feedback */
   .feedback {
     display: none;
@@ -405,6 +429,7 @@
       <div class="card-body">
         <div class="card-question">Welke hooiwagensoort is dit?</div>
         <div class="options" id="options"></div>
+        <button class="dontknow-btn" id="dontknow-btn">Ik weet het niet</button>
         <div class="feedback" id="feedback"></div>
         <div class="next-row">
           <button class="next-btn" id="next-btn">Volgende →</button>
@@ -584,6 +609,10 @@ async function showCard() {
     opts.appendChild(b);
   });
 
+  const dontknowBtn = document.getElementById('dontknow-btn');
+  dontknowBtn.disabled = false;
+  dontknowBtn.onclick = () => answer(null, card, null);
+
   const fb = document.getElementById('feedback');
   fb.className = 'feedback';
   fb.innerHTML = '';
@@ -598,13 +627,14 @@ function answer(chosen, card, btn) {
     b.disabled = true;
     if (b.dataset.name === card.name) b.classList.add('correct');
   });
+  document.getElementById('dontknow-btn').disabled = true;
 
   const fb = document.getElementById('feedback');
   if (chosen === card.name) {
     correct++;
     fb.className = 'feedback correct show';
   } else {
-    btn.classList.add('wrong');
+    if (btn) btn.classList.add('wrong'); // geen knop bij 'Ik weet het niet'
     wrong++;
     wrongCards.push(card);
     fb.className = 'feedback wrong show';
