@@ -137,5 +137,56 @@
     "habitat": "Breed scala aan biotopen",
     "season": "Augustus - december",
     "notes": "Klein en kortbenig. Mannetjes hebben redelijk distinctieve zadeltekening die eindigt in twee halve cirkels. Drietand klein, middelste tand het langst (>< L. ephippiatus die een gelijkaardig uiterlijk heeft, maar met drie ±even lange grote tanden). "
+  }, 
+
+
+
+
+  {
+    "name": "Oligolophus hanseni",
+    "nameFull": "Oligolophus hanseni (Kraepelin, 1896)",
+    "photo": "fotos/oligolophus_hanseni.jpg",
+    "rarity": "Eerder zeldzaam",
+    "habitat": "Breed scala aan biotopen, gemiddeld iets droger dan O. tridens.",
+    "season": "September - februari",
+    "notes": "Vrij klein, gemiddeld donkerder en blauwiger dan O. tridens. Drietand met stompe stekels, direct ernaast nog een extra tand, er achter een groep van vier tot zeven tanden."
+  },
+  {
+    "name": "Paroligolophus agrestis",
+    "nameFull": "Paroligolophus agrestis (Meade, 1855)",
+    "photo": "fotos/paroligolophus_agrestis.jpg",
+    "rarity": "Algemeen",
+    "habitat": "Breed scala aan biotopen",
+    "season": "Juli - februari",
+    "notes": "Vrij klein en gedrongen. Oogheuvel glad zonder tanden. Kleine drietand, waarbij grootste tand iets naar voor staat. Vaak nog wat tandjes achter drietand. Soms wat donkere banden op achterlijf."
+  },
+
+  {
+    "name": "Lacinius ephippiatus",
+    "nameFull": "Lacinius ephippiatus (C.L. Koch, 1835)",
+    "photo": "fotos/lacinius_ephippiatus.jpg",
+    "rarity": "Eerder zeldzaam",
+    "habitat": "Vochtminnend, strooisellaag en kruidlaag",
+    "season": "Eind mei - begin september",
+    "notes": "Vrij klein en kortbenig. Zeer contrastrijke zadeltekening. Lijkt op Oligolophus tridens. Drietand met drie bijna even lange tanden (>< O. tridens, middelste groter). Femora met haren én stekels (>< O. tridens, enkel haren))."
+  },
+
+  {
+    "name": "Odiellus spinosus",
+    "nameFull": "Odiellus spinosus (Bosc d'Antic, 1792)",
+    "photo": "fotos/odiellus_spinosus.jpg",
+    "rarity": "Vrij algemeen",
+    "habitat": "Warme, droge en zandige terreinen, tuinen, begraafplaatsen",
+    "season": "Juli - december",
+    "notes": "Relatief korte poten. Drietand uitzonderlijk fors, ongeveer even groot als de oogheuvel zelf. Typerende zadeltekening"
+  },
+  {
+    "name": "Mitopus morio",
+    "nameFull": "Mitopus morio (Fabricius, 1799)",
+    "photo": "fotos/mitopus_morio.jpg",
+    "rarity": "Vrij algemeen",
+    "habitat": "Houtwallen, ruige bermen, uiterwaarden, oevervegetaties op klei",
+    "season": "Juni - november",
+    "notes": "Fors en contrastrijk, lange poten. Mannetje met gele grondkleur en zwarte zadeltekening, scherp ingesnoerd achter de oogheuvel. Vrouwtjes niet altijd even duidelijk, vaak zigzag-patroon, die kan verward worden met P. opilio."
   }
 ]
