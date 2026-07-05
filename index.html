@@ -554,6 +554,10 @@ let currentCard = null;
 let currentPhotos = [];
 let currentPhotoIdx = 0;
 
+// Onthoudt per soort welke foto het laatst getoond is, zodat een herkansing
+// niet toevallig weer diezelfde foto van de eerste ronde toont.
+let lastPhotoShown = new Map();
+
 function checkImage(url) {
   return new Promise(resolve => {
     const img = new Image();
@@ -561,6 +565,17 @@ function checkImage(url) {
     img.onerror = () => resolve(null);
     img.src = url;
   });
+}
+
+// Kiest een willekeurige foto-index, maar vermijdt (indien mogelijk) de
+// vorige foto die voor deze soort getoond werd.
+function pickPhotoIndex(photos, excludeUrl) {
+  if (!photos.length) return 0;
+  const candidates = excludeUrl
+    ? photos.map((_, i) => i).filter(i => photos[i] !== excludeUrl)
+    : photos.map((_, i) => i);
+  const pool = candidates.length ? candidates : photos.map((_, i) => i);
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 async function loadPhotos(folder) {
@@ -623,6 +638,7 @@ function startLearning() {
   deck = shuffle(activeCards);
   idx = 0; correct = 0; wrong = 0; answered = false;
   wrongCards = [];
+  lastPhotoShown = new Map();
   firstPassLength = deck.length;
   document.getElementById('status').style.display = 'none';
   document.getElementById('select-screen').style.display = 'none';
@@ -697,12 +713,17 @@ async function showCard() {
   const card = deck[idx];
   currentCard = card;
 
-  // Foto's uit fotos/<slug>/1.jpg, 2.jpg, ... ophalen, telkens één willekeurig kiezen
+  // Foto's uit fotos/<slug>/1.jpg, 2.jpg, ... ophalen, telkens één willekeurig kiezen.
+  // Bij een herkansing wordt de foto van de vorige keer (indien er meerdere zijn)
+  // uitgesloten, zodat je niet twee keer dezelfde foto van deze soort krijgt.
   const imgArea = document.getElementById('img-area');
   imgArea.innerHTML = photoTag();
-  currentPhotos = await loadPhotos(card.photoFolder);
-  currentPhotoIdx = currentPhotos.length ? Math.floor(Math.random() * currentPhotos.length) : 0;
-  if (currentCard === card) renderPhotoFrame(); // negeer als ondertussen al doorgeklikt is
+  currentPhotos = await loadPhotos(card.photoFolder || card.photo);
+  currentPhotoIdx = pickPhotoIndex(currentPhotos, lastPhotoShown.get(card.name));
+  if (currentCard === card) {
+    if (currentPhotos.length) lastPhotoShown.set(card.name, currentPhotos[currentPhotoIdx]);
+    renderPhotoFrame(); // negeer als ondertussen al doorgeklikt is
+  }
 
   // Options (afleiders komen uit dezelfde gekozen groep)
   const others  = shuffle(activeCards.filter(c => c.name !== card.name)).slice(0, 3);
