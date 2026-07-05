@@ -208,5 +208,55 @@
     "habitat": "Houtwallen, ruige bermen, uiterwaarden, oevervegetaties op klei",
     "season": "Juni - november",
     "notes": "Fors en contrastrijk, lange poten. Mannetje met gele grondkleur en zwarte zadeltekening, scherp ingesnoerd achter de oogheuvel. Vrouwtjes niet altijd even duidelijk, vaak zigzag-patroon, die kan verward worden met P. opilio."
+  },
+  {
+    "name": "Dicranopalpus ramosus",
+    "nameFull": "Dicranopalpus ramosus (Simon, 1909)",
+    "family": "Phalangiidae",
+    "photo": "fotos/dicranopalpus_ramosus/",
+    "rarity": "Wellicht een exoot, die ondertussen algemeen is",
+    "habitat": "Breed scala aan biotopen",
+    "season": "Half augustus - februari",
+    "notes": "Rusthouding met alle poten evenwijdig uitgestrekt. Palp lijkt gevorkt door lang uitsteeksel op de patella."
+  },
+  {
+    "name": "Homalenotus quadridentatus",
+    "nameFull": "Homalenotus quadridentatus (Cuvier, 1795)",
+    "family": "Phalangiidae",
+    "photo": "fotos/homalenotus_quadridentatus/",
+    "rarity": "Zeldzaam",
+    "habitat": "Bodem- en strooiselbewoner. Gebonden aan kalkhoudende bodems.",
+    "season": "Het hele jaar",
+    "notes": "Te verwarren met Astrobunus laevipes. Verschil: vier witte tanden aan de achterrand van het achterlijf."
+  },
+  {
+    "name": "Astrobunus laevipes",
+    "nameFull": "Astrobunus laevipes (Canestrini, 1872)",
+    "family": "Phalangiidae",
+    "photo": "fotos/astrobunus_laevipes/",
+    "rarity": "Zeer zeldzaam, sinds 2022 in België",
+    "habitat": "Strooisellaag rond waterlichamen",
+    "season": "Het hele jaar",
+    "notes": "Lijkt op Homalenotus quadridentatus, maar dan zonder witte tanden op de rand van het achterlijf"
+  },
+  {
+    "name": "Leiobunum rotundum",
+    "nameFull": "Leiobunum rotundum (Latreille, 1798)",
+    "family": "Phalangiidae",
+    "photo": "fotos/leiobunum_rotundum/",
+    "rarity": "Algemeen",
+    "habitat": "Breed scala aan biotopen",
+    "season": "Eind juni - eind november",
+    "notes": "Zeer lange poten. Oogheuvel zwart met een lichte mediane band. Mannetje egaal roodbruin, trochanters zwart (>< Opilio canestrinii). Vormt soms aggregaties van honderden individuen."
+  },
+  {
+    "name": "Leiobunum blackwalli",
+    "nameFull": "Leiobunum blackwalli Meade, 1861",
+    "family": "Phalangiidae",
+    "photo": "fotos/leiobunum_blackwalli/",
+    "rarity": "Vrij algemeen, minder voorkomend dan L. rotundum",
+    "habitat": "Doorgaans in meer open biotopen dan L. rotundum",
+    "season": "Eind juli - begin januari",
+    "notes": "Middelgroot, fijner gebouwd dan L. rotundum. Oogheuvel licht met donkere middenstreep, ogen donker omrand (L. rotundum)."
   }
 ]
