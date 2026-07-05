@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hooiwagens van België — Opiliones</title>
+<title>Harvestmen of Belgium — Opiliones</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- Consolas is een lokaal geïnstalleerd lettertype (Windows/Office); DM Mono is de
@@ -11,19 +11,19 @@
 <style>
   :root {
     --mono: Consolas, 'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    --bg:      #f2ede2;
-    --bg2:     #e6dfcd;
-    --bg3:     #cabf9f;
-    --paper:   #faf7ee;
-    --ink:     #1a1610;
-    --ink2:    #4a4238;
-    --ink3:    #7a6e60;
-    --accent:  #5c3d1e;
-    --accent2: #8b5e30;
-    --good:    #2a4a18;
-    --good-bg: #e8efdc;
-    --bad:     #7a2a18;
-    --bad-bg:  #f2e2da;
+    --bg:      #e9eaec;
+    --bg2:     #dcdee1;
+    --bg3:     #b9bdc3;
+    --paper:   #f7f8f9;
+    --ink:     #17191c;
+    --ink2:    #454951;
+    --ink3:    #6f747d;
+    --accent:  #33373d;
+    --accent2: #565c65;
+    --good:    #1f4a2e;
+    --good-bg: #dfe8e1;
+    --bad:     #6b2c26;
+    --bad-bg:  #e9dfdc;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,14 +69,6 @@
   h1 .h1-sub {
     font-weight: 400;
     color: var(--accent2);
-  }
-
-  .subtitle {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    margin-top: 5px;
   }
 
   main {
@@ -348,14 +340,6 @@
     margin-bottom: 1.5rem;
   }
 
-  .done-msg {
-    font-family: var(--mono);
-    font-style: normal;
-    font-size: 0.95rem;
-    color: var(--ink2);
-    margin-bottom: 2rem;
-  }
-
   .restart-btn {
     font-family: var(--mono);
     font-size: 11px;
@@ -470,8 +454,7 @@
 
 <header>
   <div class="header-inner">
-    <h1>Hooiwagens van België <span class="h1-sub">— Opiliones</span></h1>
-    <div class="subtitle">Leer de soorten herkennen</div>
+    <h1>Harvestmen of Belgium <span class="h1-sub">— Opiliones</span></h1>
   </div>
 </header>
 
@@ -488,20 +471,20 @@
     </div>
 
     <div id="status" class="status-msg">
-      <strong>Kaarten laden…</strong>
+      <strong>Loading cards…</strong>
     </div>
 
     <div class="select-screen" id="select-screen" style="display:none">
-      <div class="select-title">Welke groep wil je oefenen?</div>
+      <div class="select-title">Which group do you want to practice?</div>
       <div class="select-options">
         <button class="select-btn" onclick="startGroup('phalangiidae')">
-          Echte hooiwagens<span>familie Phalangiidae</span>
+          True harvestmen<span>family Phalangiidae</span>
         </button>
         <button class="select-btn" onclick="startGroup('rest')">
-          De rest<span>overige families</span>
+          The rest<span>other families</span>
         </button>
         <button class="select-btn" onclick="startGroup('alles')">
-          Alles door elkaar<span>alle families samen</span>
+          Random mix<span>all families combined</span>
         </button>
       </div>
     </div>
@@ -509,23 +492,22 @@
     <div class="flashcard" id="flashcard" style="display:none">
       <div class="card-image-area" id="img-area"></div>
       <div class="card-body">
-        <div class="card-question">Welke hooiwagensoort is dit?</div>
+        <div class="card-question">Which harvestman species is this?</div>
         <div class="options" id="options"></div>
-        <button class="dontknow-btn" id="dontknow-btn">Ik weet het niet</button>
+        <button class="dontknow-btn" id="dontknow-btn">I don't know</button>
         <div class="feedback" id="feedback"></div>
         <div class="next-row">
-          <button class="next-btn" id="next-btn">Volgende →</button>
+          <button class="next-btn" id="next-btn">Next →</button>
         </div>
       </div>
     </div>
 
     <div class="done-screen" id="done-screen">
       <div class="done-score" id="done-score">0</div>
-      <div class="done-label">correct van <span id="done-total">0</span></div>
-      <div class="done-msg" id="done-msg"></div>
-      <button class="restart-btn" onclick="startLearning()">Opnieuw beginnen</button>
+      <div class="done-label">correct out of <span id="done-total">0</span></div>
+      <button class="restart-btn" onclick="startLearning()">Start over</button>
       <div class="switch-group-row">
-        <button class="switch-group-btn" onclick="backToGroupSelect()">Andere groep kiezen</button>
+        <button class="switch-group-btn" onclick="backToGroupSelect()">Choose another group</button>
       </div>
     </div>
 
@@ -595,14 +577,14 @@ async function loadCards() {
     const res = await fetch('cards.json?v=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     cards = await res.json();
-    if (!cards.length) throw new Error('Geen kaarten gevonden');
+    if (!cards.length) throw new Error('No cards found');
     document.getElementById('status').style.display = 'none';
     document.getElementById('select-screen').style.display = 'block';
   } catch (e) {
     document.getElementById('status').innerHTML =
-      '<strong>cards.json niet gevonden</strong>' +
-      'Zorg dat <code>cards.json</code> naast <code>index.html</code> staat in je repo.<br>' +
-      'Fout: ' + e.message;
+      '<strong>cards.json not found</strong>' +
+      'Make sure <code>cards.json</code> is next to <code>index.html</code> in your repo.<br>' +
+      'Error: ' + e.message;
   }
 }
 
@@ -670,7 +652,7 @@ const NO_PHOTO_SVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.
 </svg>`;
 
 function photoTag() {
-  const retry = idx >= firstPassLength ? '<span class="retry-tag">Herkansing</span>' : '';
+  const retry = idx >= firstPassLength ? '<span class="retry-tag">Retry</span>' : '';
   return `<span class="card-counter">${idx + 1} / ${deck.length}</span>${retry}`;
 }
 
@@ -683,7 +665,7 @@ function renderPhotoFrame() {
   }
 
   if (!currentPhotos.length) {
-    showNoPhoto('Geen foto');
+    showNoPhoto('No photo');
     return;
   }
 
@@ -692,7 +674,7 @@ function renderPhotoFrame() {
   imgArea.innerHTML = tag;
   const img = document.createElement('img');
   img.alt = currentCard.name;
-  img.onerror = () => showNoPhoto('Foto niet gevonden');
+  img.onerror = () => showNoPhoto('Photo not found');
   img.src = currentPhotos[currentPhotoIdx];
   imgArea.prepend(img);
 }
@@ -773,9 +755,9 @@ function answer(chosen, card, btn) {
   fb.innerHTML = `<strong>${card.nameFull || card.name}</strong>
     ${card.notes || ''}
     <div class="detail-row">
-      ${card.rarity  ? '<span>Zeldzaamheid: ' + card.rarity  + '</span>' : ''}
+      ${card.rarity  ? '<span>Rarity: ' + card.rarity  + '</span>' : ''}
       ${card.habitat ? '<span>Habitat: ' + card.habitat + '</span>' : ''}
-      ${card.season  ? '<span>Seizoen: '  + card.season  + '</span>' : ''}
+      ${card.season  ? '<span>Season: '  + card.season  + '</span>' : ''}
     </div>`;
 
   idx++;
@@ -789,12 +771,6 @@ function showDone() {
   document.getElementById('done-screen').classList.add('show');
   document.getElementById('done-score').textContent = correct;
   document.getElementById('done-total').textContent = deck.length;
-  const pct = Math.round((correct / deck.length) * 100);
-  document.getElementById('done-msg').textContent =
-    pct === 100 ? 'Perfecte score — meester van de Opiliones!' :
-    pct >= 75   ? 'Uitstekend! Bijna een expert.' :
-    pct >= 50   ? 'Goed bezig, blijf oefenen.' :
-                  'Nog wat studeren — je komt er!';
 }
 
 loadCards();
