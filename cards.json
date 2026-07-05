@@ -79,10 +79,6 @@
     "season": "Het hele jaar",
     "notes": "Heel kleine Trogulidae, moeilijk op zicht te vinden. Lichaam is niet afgeplat (verschil met Trogulus)."
   },
-
-
-
-
   {
     "name": "Phalangium opilio",
     "nameFull": "Phalangium opilio Linnaeus, 1758",
@@ -153,10 +149,6 @@
     "season": "Augustus - december",
     "notes": "Klein en kortbenig. Mannetjes hebben redelijk distinctieve zadeltekening die eindigt in twee halve cirkels. Drietand klein, middelste tand het langst (>< L. ephippiatus die een gelijkaardig uiterlijk heeft, maar met drie ±even lange grote tanden). "
   }, 
-
-
-
-
   {
     "name": "Oligolophus hanseni",
     "nameFull": "Oligolophus hanseni (Kraepelin, 1896)",
@@ -177,7 +169,6 @@
     "season": "Juli - februari",
     "notes": "Vrij klein en gedrongen. Oogheuvel glad zonder tanden. Kleine drietand, waarbij grootste tand iets naar voor staat. Vaak nog wat tandjes achter drietand. Soms wat donkere banden op achterlijf. Genitale plaat ingesneden."
   },
-
   {
     "name": "Lacinius ephippiatus",
     "nameFull": "Lacinius ephippiatus (C.L. Koch, 1835)",
@@ -188,7 +179,6 @@
     "season": "Eind mei - begin september",
     "notes": "Vrij klein en kortbenig. Zeer contrastrijke zadeltekening. Lijkt op Oligolophus tridens. Drietand met drie bijna even lange tanden (>< O. tridens, middelste groter). Femora met haren én stekels (>< O. tridens, enkel haren))."
   },
-
   {
     "name": "Odiellus spinosus",
     "nameFull": "Odiellus spinosus (Bosc d'Antic, 1792)",
@@ -268,5 +258,14 @@
     "habitat": "Stenige ondergrond: muren, steenfabrieken, bruggen",
     "season": "Eind juni - eind december",
     "notes": "Grootste hooiwagen van de Benelux, tot 18 cm spanwijdte. Kenmerkende groene metaalglans en vaak kenmerkende lichtere vlekken naast oogheuvel. Zwarte trochanters en poten."
+  },
+  {
+    "name": "Nelima doriae",
+    "nameFull": "Nelima doriae (Canestrini, 1871)",
+    "photoFolder": "fotos/nelima_doriae/",
+    "rarity": "Sinds 2011 vastgesteld in België, ondertussen vrij algemeen",
+    "habitat": "Voornamelijk in door mens gevormde biotopen (tuinen, parken)",
+    "season": "Het hele jaar, maar geen adulten in januari en februari",
+    "notes": "Oogheuvel licht, zwart omrande ogen en heel kleine tandjes. Coxae van de poten zonder korrelrijen (onderscheid met Leiobunum). Grondkleur van beide seksen lichtbruin tot oker. Rugzijde met fijne granula, die niet donkerder zijn dan de achtergrondkleur."
   }
 ]
