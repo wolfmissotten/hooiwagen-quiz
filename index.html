@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harvestmen of Belgium — Opiliones</title>
+<title>Opiliones of Belgium</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <!-- Consolas is een lokaal geïnstalleerd lettertype (Windows/Office); DM Mono is de
@@ -20,10 +20,10 @@
     --ink3:    #6f747d;
     --accent:  #33373d;
     --accent2: #565c65;
-    --good:    #1f4a2e;
-    --good-bg: #dfe8e1;
-    --bad:     #6b2c26;
-    --bad-bg:  #e9dfdc;
+    --good:    #157a3d;
+    --good-bg: #cdf0da;
+    --bad:     #c22a1e;
+    --bad-bg:  #fadad2;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -262,8 +262,8 @@
   }
 
   .feedback.show { display: block; }
-  .feedback.correct { background: var(--good-bg); border-left-color: var(--good); color: #1f3610; }
-  .feedback.wrong   { background: var(--bad-bg);  border-left-color: var(--bad);  color: #3a1a12; }
+  .feedback.correct { background: var(--good-bg); border-left-color: var(--good); color: var(--good); }
+  .feedback.wrong   { background: var(--bad-bg);  border-left-color: var(--bad);  color: var(--bad); }
 
   .feedback strong {
     font-family: var(--mono);
@@ -481,7 +481,7 @@
           True harvestmen<span>family Phalangiidae</span>
         </button>
         <button class="select-btn" onclick="startGroup('rest')">
-          The rest<span>other families</span>
+          Other families<span>
         </button>
         <button class="select-btn" onclick="startGroup('alles')">
           Random mix<span>all families combined</span>
@@ -492,7 +492,6 @@
     <div class="flashcard" id="flashcard" style="display:none">
       <div class="card-image-area" id="img-area"></div>
       <div class="card-body">
-        <div class="card-question">Which harvestman species is this?</div>
         <div class="options" id="options"></div>
         <button class="dontknow-btn" id="dontknow-btn">I don't know</button>
         <div class="feedback" id="feedback"></div>
