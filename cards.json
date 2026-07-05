@@ -247,7 +247,7 @@
     "rarity": "Algemeen",
     "habitat": "Breed scala aan biotopen",
     "season": "Eind juni - eind november",
-    "notes": "Zeer lange poten. Oogheuvel zwart met een lichte mediane band. Mannetje egaal roodbruin, trochanters zwart (>< Opilio canestrinii). Vormt soms aggregaties van honderden individuen."
+    "notes": "Zeer lange poten. Oogheuvel zwart met een lichte mediane band. Mannetje egaal roodbruin, trochanters zwart (>< Opilio canestrinii)."
   },
   {
     "name": "Leiobunum blackwalli",
@@ -258,5 +258,15 @@
     "habitat": "Doorgaans in meer open biotopen dan L. rotundum",
     "season": "Eind juli - begin januari",
     "notes": "Middelgroot, fijner gebouwd dan L. rotundum. Oogheuvel licht met donkere middenstreep, ogen donker omrand (L. rotundum)."
+  },
+  {
+    "name": "Leiobunum sp. A",
+    "nameFull": "Leiobunum sp. A",
+    "family": "Phalangiidae",
+    "photo": "fotos/leiobunum_sp_a/",
+    "rarity": "Recente nieuwkomer, wellicht redelijk algemeen",
+    "habitat": "Stenige ondergrond: muren, steenfabrieken, bruggen",
+    "season": "Eind juni - eind december",
+    "notes": "Grootste hooiwagen van de Benelux, tot 18 cm spanwijdte. Kenmerkende groene metaalglans en vaak kenmerkende lichtere vlekken naast oogheuvel. Zwarte trochanters en poten."
   }
 ]
