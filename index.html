@@ -708,7 +708,7 @@ async function showCard() {
   }
 
   // Options (afleiders komen uit dezelfde gekozen groep)
-  const others  = shuffle(activeCards.filter(c => c.name !== card.name)).slice(0, 3);
+  const others  = shuffle(activeCards.filter(c => c.name !== card.name)).slice(0, 5);
   const choices = shuffle([card, ...others]);
   const opts = document.getElementById('options');
   opts.innerHTML = '';
